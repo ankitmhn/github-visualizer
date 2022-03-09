@@ -17,7 +17,7 @@ export const UserProfileCard: React.VFC<UserProfileCardProps> = ({
   name,
 }) => {
   return (
-    <Card style={{ width: "40%", border: "red" }}>
+    <Card style={{ width: "40%", border: "red" }} shadow="lg" padding="lg">
       <Box
         style={{
           display: "flex",
@@ -29,7 +29,7 @@ export const UserProfileCard: React.VFC<UserProfileCardProps> = ({
         }}
       >
         <Box style={{ display: "flex", flexDirection: "column" }}>
-          <Anchor href={githubUrl} target="_blank">
+          <Anchor href={githubUrl} target="_blank" rel="noopener noreferrer">
             <Title order={1} style={{ fontStyle: "inherit" }}>
               {name}
             </Title>
@@ -38,7 +38,7 @@ export const UserProfileCard: React.VFC<UserProfileCardProps> = ({
             <Badge color={"violet"} size="md" fullWidth style={{ marginBottom: "5px" }}>
               {repositoryCount || 0} repositories
             </Badge>
-            <Anchor href={githubUrl} target="_blank" style={{ cursor: "pointer" }}>
+            <Anchor href={githubUrl} target="_blank" rel="noopener noreferrer" style={{ cursor: "pointer" }}>
               <Badge color={"violet"} size="md" fullWidth>
                 {githubUrl}
               </Badge>
@@ -47,7 +47,6 @@ export const UserProfileCard: React.VFC<UserProfileCardProps> = ({
         </Box>
         <Avatar src={imageSrc} size="xl" />
       </Box>
-      <Divider />
     </Card>
   );
 };
