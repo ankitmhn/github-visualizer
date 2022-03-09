@@ -7,6 +7,12 @@ interface SearchBarProps {
 }
 export const SearchBar: React.VFC<SearchBarProps> = ({ loading = false, onClickSearch }) => {
   const [userName, setUsername] = useState("");
+
+  const listenForEnter: React.KeyboardEventHandler<HTMLDivElement> = (e) => {
+    console.log({ event: e });
+    if (e.key === "Enter" && userName.length) onClickSearch(userName);
+  };
+
   return (
     <div
       style={{ display: "flex", flexDirection: "row", alignItems: "center", width: "100%", justifyContent: "center" }}
@@ -19,6 +25,7 @@ export const SearchBar: React.VFC<SearchBarProps> = ({ loading = false, onClickS
         placeholder="github username"
         rightSection={loading ? <Loader size={"xs"} /> : null}
         onChange={setUsername}
+        onKeyUp={listenForEnter} //strange this doesn't work with onKeyPress
       />
       <Button style={{ marginTop: "2.5rem", marginLeft: "1rem" }} onClick={() => onClickSearch(userName)}>
         Search!

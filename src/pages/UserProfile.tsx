@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import { UserProfileCard } from "../components/UserProfile";
 import { useAllReposData, useProfileData } from "../hooks/api-hooks";
 import { RepoList } from "../components/RepoList";
+import { Pagination } from "@mantine/core";
 
 export const UserProfile: React.VFC = () => {
   const { user } = useParams();
@@ -17,9 +18,7 @@ export const UserProfile: React.VFC = () => {
     page: repoPage,
   });
 
-  useEffect(() => {
-    console.log({ repos, reposLoading });
-  }, [repos, reposLoading]);
+  const totalPages = useMemo(() => (data?.public_repos ? Math.ceil(data.public_repos / 30) : 0), [data?.public_repos]);
 
   return (
     <div
@@ -43,11 +42,13 @@ export const UserProfile: React.VFC = () => {
         repositoryCount={data?.public_repos}
         loading={isLoading}
       />
+      <Pagination page={repoPage} onChange={setRepoPage} total={totalPages} style={{ marginTop: "1rem" }} />
       <RepoList
         repos={repos}
         onNextPage={() => setRepoPage((current) => current + 1)}
         onPreviousPage={() => setRepoPage((current) => (current > 1 ? current - 1 : current))}
       />
+      <Pagination page={repoPage} onChange={setRepoPage} total={totalPages} />
     </div>
   );
 };
