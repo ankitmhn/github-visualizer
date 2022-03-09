@@ -15,7 +15,7 @@ export const SearchBar: React.VFC<SearchBarProps> = ({ loading = false, onClickS
         data={[]}
         size="xl"
         style={{ width: "50%" }}
-        label="Look up your next hire's github profile!"
+        label="Look up your next hire's github profile! 😎"
         labelProps={{ style: { marginLeft: "auto", marginRight: "auto" } }}
         placeholder="github username"
         rightSection={loading ? <Loader size={"xs"} /> : null}
