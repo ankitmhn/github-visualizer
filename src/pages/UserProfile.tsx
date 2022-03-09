@@ -5,11 +5,12 @@ import { useQuery } from "react-query";
 
 import { UserProfileCard } from "../components/UserProfile";
 import { useAllReposData, useProfileData } from "../hooks/api-hooks";
+import { RepoList } from "../components/RepoList";
 
 export const UserProfile: React.VFC = () => {
   const { user } = useParams();
 
-  const [repoPage, setRepoPage] = useState(2);
+  const [repoPage, setRepoPage] = useState(1);
 
   const { data, isLoading } = useProfileData({ username: user || "", enabled: Boolean(user) });
   const {
@@ -23,7 +24,17 @@ export const UserProfile: React.VFC = () => {
   }, [repos, reposLoading]);
 
   return (
-    <Center style={{ height: "100vh" }}>
+    <div
+      style={{
+        minHeight: "100vh",
+        position: "relative",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        width: "100%",
+      }}
+    >
       <Link to={"/"} style={{ position: "absolute", top: "2rem", left: "1rem" }}>
         Back
       </Link>
@@ -34,6 +45,11 @@ export const UserProfile: React.VFC = () => {
         repositoryCount={data?.public_repos}
         loading={isLoading}
       />
-    </Center>
+      <RepoList
+        repos={repos}
+        onNextPage={() => setRepoPage((current) => current + 1)}
+        onPreviousPage={() => setRepoPage((current) => (current > 1 ? current - 1 : current))}
+      />
+    </div>
   );
 };

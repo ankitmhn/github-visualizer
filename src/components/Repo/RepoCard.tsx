@@ -23,16 +23,20 @@ export const RepoCard: React.VFC<RepoCardProps> = ({ htmlUrl, repoName, stars, f
         justifyContent: "center",
         flexDirection: "column",
         gap: "10px",
+        margin: "0.5rem 1rem",
+        borderRadius: "5px",
       }}
-      shadow="xl"
+      shadow="sm"
       padding={"sm"}
       onClick={openInNewTab}
     >
-      <Text size="xl">{repoName}</Text>
+      <Text size="xl" style={{ whiteSpace: "nowrap" }}>
+        {repoName}
+      </Text>
       <Badge fullWidth style={{ width: "15rem" }}>
         {htmlUrl?.split(".com")[1]}
       </Badge>
-      <Box>
+      <Box style={{ display: "flex", justifyContent: "space-evenly", alignItems: "center", width: "70%" }}>
         <Badge color={"orange"}>{stars} stars</Badge>
         <Badge color={"teal"}>{forks} forks</Badge>
       </Box>

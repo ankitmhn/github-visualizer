@@ -22,7 +22,7 @@ export const useProfileData = ({ username, enabled }: QueryInput) =>
     { enabled }
   );
 
-interface RepoData {
+export interface RepoData {
   html_url?: string;
   name: string;
   stargazers_count: number;
