@@ -4,7 +4,7 @@ import { Anchor, Avatar, Badge, Box, Card, Divider, Title } from "@mantine/core"
 interface UserProfileCardProps {
   loading?: boolean;
   imageSrc?: string;
-  repositoryCount?: string;
+  repositoryCount?: number;
   githubUrl?: string;
   name?: string;
 }

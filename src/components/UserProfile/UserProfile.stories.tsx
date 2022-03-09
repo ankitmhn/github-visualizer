@@ -17,7 +17,7 @@ export default {
     imageSrc: "https://avatars.githubusercontent.com/u/16084067?v=4",
     loading: false,
     name: "Ankit Mohan",
-    repositoryCount: "50",
+    repositoryCount: 50,
   },
 } as ComponentMeta<typeof UserProfileCard>;
 
