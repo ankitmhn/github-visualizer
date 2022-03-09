@@ -1,29 +1,11 @@
-Build a small React app which shows the public Github repositories of a user. The app should have two pages. Github API documentation https://developer.github.com/v3/repos/#list-user-repositories
-1. User Search Page
-Input field for searching Github users by username
-Search button
-( As a visual example, imagine something like http://google.com search layout )
-2. User Result Page
-A link which takes you back to search page
-User Information
 
-User Photo
-User Name
-Repositories Count
-Link to Github profile ( opens in new tab and gets focused )
-List or Grid of paginated repositories
+## Running the project
 
-Each Repository item
+To run this project, run
+1. `yarn install` or `npm install` to install deps
+2. `yarn dev` or `npm run dev` to run the project in dev mode
 
-Display Name
-Displays number of stars
-Displays number of forks
-Upon click on the repository item or any other sort of link, a new tab is being opened in the browser with the Github page repository ( opens in new tab and gets focused )
+## Storybook
 
-Overall Requirements
-The provided solution should follow good basic frontend practices (code & UI design).
-Routing should be used to allow linking to a specific user’s result page.
-Usage of 3rd party UI and component libraries is allowed.
-Testing is encouraged but not required.
+Storybook is used to prototype the components. You can run storybook to interact with the components using `yarn storybook` or `npm run storybook`.
 
-Please deliver the code as a public Github repository. Try to describe in a README.md file to the best of your ability what the project does and how to run it. Testing is encouraged. Deploying the app and sharing a link is also encouraged.
