@@ -10,8 +10,12 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@mantine/core": "^3.6.14",
+    "@mantine/hooks": "^3.6.14",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-query": "^3.34.16",
+    "react-router-dom": "^6.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
