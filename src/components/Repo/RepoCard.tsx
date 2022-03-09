@@ -1,4 +1,4 @@
-import { Badge, Box, Card, Center, Text } from "@mantine/core";
+import { Badge, Box, Card, Text } from "@mantine/core";
 import React from "react";
 
 interface RepoCardProps {

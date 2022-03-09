@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Center } from "@mantine/core";
 import { Link, useParams } from "react-router-dom";
-import { useQuery } from "react-query";
 
 import { UserProfileCard } from "../components/UserProfile";
 import { useAllReposData, useProfileData } from "../hooks/api-hooks";
@@ -13,11 +11,11 @@ export const UserProfile: React.VFC = () => {
   const [repoPage, setRepoPage] = useState(1);
 
   const { data, isLoading } = useProfileData({ username: user || "", enabled: Boolean(user) });
-  const {
-    data: repos,
-    isLoading: reposLoading,
-    refetch,
-  } = useAllReposData({ username: user || "", enabled: Boolean(user), page: repoPage });
+  const { data: repos, isLoading: reposLoading } = useAllReposData({
+    username: user || "",
+    enabled: Boolean(user),
+    page: repoPage,
+  });
 
   useEffect(() => {
     console.log({ repos, reposLoading });
