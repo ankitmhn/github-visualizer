@@ -28,7 +28,7 @@ describe("Searchbar", () => {
     expect(input.value).toBe("github username");
   });
 
-  test("should call the onClick with the user input on clicking search button", () => {
+  test("should call the onClick with the user input on clicking search button or hitting enter", () => {
     render(<SearchBar onClickSearch={onClick} />);
     const input = screen.getByRole<HTMLInputElement>("textbox");
     const button = screen.getByRole("button");
@@ -38,7 +38,7 @@ describe("Searchbar", () => {
     expect(onClick).toHaveBeenCalledWith("github username");
 
     fireEvent.change(input, { target: { value: "updated username" } });
-    fireEvent.click(button);
+    fireEvent.keyUp(input, { key: "Enter", keyCode: 13 });
     expect(onClick).toHaveBeenLastCalledWith("updated username");
   });
 });

@@ -9,7 +9,6 @@ export const SearchBar: React.VFC<SearchBarProps> = ({ loading = false, onClickS
   const [userName, setUsername] = useState("");
 
   const listenForEnter: React.KeyboardEventHandler<HTMLDivElement> = (e) => {
-    console.log({ event: e });
     if (e.key === "Enter" && userName.length) onClickSearch(userName);
   };
 
