@@ -24,3 +24,6 @@ export default {
 const Template: ComponentStory<typeof UserProfileCard> = (args) => <UserProfileCard {...args} />;
 
 export const Default = Template.bind({});
+
+export const Loading = Template.bind({});
+Template.args = { ...Default.args, loading: true };
