@@ -18,13 +18,19 @@ export const UserProfile: React.VFC = () => {
 
   const [repoPage, setRepoPage] = useState(1);
 
-  const { data, isLoading } = useProfileData({ username: user || "", enabled: Boolean(user) });
-  const { data: repos, isLoading: reposLoading } = useAllReposData({
+  const { data, isLoading, error: profileError } = useProfileData({ username: user || "", enabled: Boolean(user) });
+  const {
+    data: repos,
+    isLoading: reposLoading,
+    error: reposError,
+  } = useAllReposData({
     username: user || "",
     enabled: Boolean(user),
     page: repoPage,
   });
 
+  if (profileError || reposError) return <div>Oops... something went wrong</div>;
+  
   const totalPages = useMemo(() => (data?.public_repos ? Math.ceil(data.public_repos / GH_REPOS_PER_PAGE) : 0), [data?.public_repos]);
 
   return (
